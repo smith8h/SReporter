@@ -119,11 +119,11 @@ public class TeleReporter {
 	private String getFinalReport() {
 		StringBuffer buffer = new StringBuffer();
         
-        buffer.append("**" + reportHeader + "**\n");
+        buffer.append(reportHeader + "\n");
         if (!reportSubHeader.isEmpty()) buffer.append(reportSubHeader + "\n");
-        buffer.append("\n**" + context.getString(R.string.tele_reporter_message_title) + "**\n");
+        buffer.append("\n" + context.getString(R.string.tele_reporter_message_title) + "\n");
 		buffer.append(reportMessage + "\n\n");
-        buffer.append("**" + context.getString(R.string.tele_reporter_footer_title) + "**\n");
+        buffer.append(context.getString(R.string.tele_reporter_footer_title) + "\n");
         buffer.append(reportFooter);
         
         return buffer.toString();
