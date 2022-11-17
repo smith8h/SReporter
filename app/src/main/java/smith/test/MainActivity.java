@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
     public void check(View v) {
         EditText et = findViewById(R.id.et);
         
-        String token = "1952111437:AAHruEiN5nU1J83PAvJYNtagvbvWsA--6JQ";
+        String token = "195.........JQ";
         String id = "@smith_com";
         String header = "" ;
         String subHeader = "This is sub header";
