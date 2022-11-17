@@ -1,18 +1,15 @@
 package smith.lib.net.reporter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
-import android.os.strictmode.Violation;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.StandardCharsets;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import javax.security.auth.callback.Callback;
 import smith.lib.net.SConnect;
 import smith.lib.net.SConnectCallBack;
 
@@ -142,4 +139,19 @@ public class TeleReporter {
 		int stringId = applicationInfo.labelRes;
 		return stringId == 0 ? applicationInfo.nonLocalizedLabel.toString() : context.getString(stringId);
 	}
+    
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append("Bot Token        | " + botToken + "\n");
+        builder.append("Target Chat      | " + chatUsername + "\n");
+        builder.append("Report Header    | " + reportHeader + "\n");
+        builder.append("Report SubHeader | " + reportSubHeader + "\n");
+        builder.append("Report Body      | " + reportMessage + "\n");
+        builder.append("Report Footer    | " + reportFooter + "\n");
+        builder.append("Device Info.     | " + getUserInfo() + "\n");
+        builder.append("Used App Name    | " + getAppName() + "\n");
+        builder.append("Final API URL    | " + getFinalURL());
+        return builder.toString();
+    }
 }

@@ -13,6 +13,15 @@ import smith.lib.net.reporter.ReporterCallBack;
 
 public class MainActivity extends AppCompatActivity {
     
+    ReporterCallBack callback = new ReporterCallBack() {
+        @Override public void onSuccess(String message) {
+            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+        }
+        @Override public void onFail(String message) {
+            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+        }
+    };
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         LogSender.startLogging(this);
@@ -24,7 +33,11 @@ public class MainActivity extends AppCompatActivity {
     public void check(View v) {
         EditText et = findViewById(R.id.et);
         
+<<<<<<< HEAD
         String token = "195.........JQ";
+=======
+        String token = "1952......-6JQ";
+>>>>>>> d13762d (clear coding & override toString() methid for log purpose)
         String id = "@smith_com";
         String header = "" ;
         String subHeader = "This is sub header";
@@ -38,14 +51,7 @@ public class MainActivity extends AppCompatActivity {
         tr.setReportSubHeader(subHeader);
         tr.setReportMessage(body);
         tr.setReportFooter(TeleReporter.USER_INFO, "");
-        tr.setReportCallBack(new ReporterCallBack() {
-            @Override public void onSuccess(String message) {
-                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-            }
-            @Override public void onFail(String message) {
-                Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
-            }
-        });
+        tr.setReportCallBack(callback);
         tr.sendReport();
         
         tr.setReportFooter(TeleReporter.CUSTOM, footer);
