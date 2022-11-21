@@ -8,6 +8,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import com.itsaky.androidide.logsender.LogSender;
+import smith.lib.net.reporter.DiscReporter;
 import smith.lib.net.reporter.TeleReporter;
 import smith.lib.net.reporter.ReporterCallBack;
 
@@ -38,6 +39,23 @@ public class MainActivity extends AppCompatActivity {
         String username = "";
         String avatarURL = "";
         boolean tts = false;
+        
+        DiscReporter dr = new DiscReporter(this);
+        dr.setWeebHook(webhookURL);
+        dr.setUsername(username);
+        dr.setAvatarUrl(avatarURL);
+        dr.setContent(content);
+        dr.setReportCallBack(new ReporterCallBack() {
+            @Override public void onFail(String msg) {
+                
+            }
+            
+            @Override public void onSuccess(String msg) {
+                
+            }
+        });
+        dr.setTts(true);
+        dr.addEmbed(new DiscEmbed());
         
         /*
         String token = "1952......-6JQ";
