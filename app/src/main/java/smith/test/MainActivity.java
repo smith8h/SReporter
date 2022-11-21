@@ -33,11 +33,14 @@ public class MainActivity extends AppCompatActivity {
     public void check(View v) {
         EditText et = findViewById(R.id.et);
         
-<<<<<<< HEAD
-        String token = "195.........JQ";
-=======
+        String webhookURL = "";
+        String content = "";
+        String username = "";
+        String avatarURL = "";
+        boolean tts = false;
+        
+        /*
         String token = "1952......-6JQ";
->>>>>>> d13762d (clear coding & override toString() methid for log purpose)
         String id = "@smith_com";
         String header = "" ;
         String subHeader = "This is sub header";
@@ -57,9 +60,10 @@ public class MainActivity extends AppCompatActivity {
         tr.setReportFooter(TeleReporter.CUSTOM, footer);
         tr.sendReport();
         
-        /*
+        
             getReport()
             getReportURL()
+        
         */
     }
 }
