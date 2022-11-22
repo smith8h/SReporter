@@ -10,10 +10,10 @@
     
     <string name="tele_reporter_header_title">A New Report Sent from %s App!</string>
     <string name="tele_reporter_message_title">Message:</string>
-    <string name="tele_reporter_footer_title">User\'s Device Info:</string>
+    <string name="tele_reporter_footer_title">More Information From User:</string>
     
-    <string name="tele_reporter_device_model">Device Model: %s %s</string>
-    <string name="tele_reporter_android_version">Android Version: %s (%s)</string>
-    <string name="tele_reporter_app_used">App Used: %s (%s)</string>
+    <string name="tele_reporter_device_model">Device model: %s %s</string>
+    <string name="tele_reporter_android_version">Android version: %s (%s)</string>
+    <string name="tele_reporter_app_used">App: %s (%s)</string>
     
 </resources>

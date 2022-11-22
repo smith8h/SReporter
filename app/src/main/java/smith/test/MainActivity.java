@@ -9,6 +9,7 @@ import com.itsaky.androidide.logsender.LogSender;
 import smith.lib.net.reporter.DiscEmbed;
 import smith.lib.net.reporter.DiscReporter;
 import smith.lib.net.reporter.ReporterCallBack;
+import smith.lib.net.reporter.TeleReporter;
 
 public class MainActivity extends AppCompatActivity {
     
@@ -33,10 +34,10 @@ public class MainActivity extends AppCompatActivity {
         EditText et = findViewById(R.id.et);
         
         String webhookURL = "";
-        String content = "";
-        String username = "";
-        String avatarURL = "";
-        boolean tts = false;
+        String content = "Some Content";
+        String username = "@sreporter";
+        String avatarURL = "https://te.legra.ph/file/9e44d81148b9436acb0f7.jpg";
+        boolean tts = true;
         
         DiscReporter dr = new DiscReporter(this);
         dr.setWeebHook(webhookURL);
@@ -44,16 +45,26 @@ public class MainActivity extends AppCompatActivity {
         dr.setAvatarUrl(avatarURL);
         dr.setContent(content);
         dr.setReportCallBack(callback);
-        dr.setTts(true);
+        dr.setTts(tts);
         dr.addEmbed(new DiscEmbed.Builder()
-                
-                .build());
+            .setDescription("Description")
+            .setTitle("Title")
+            .setUrl("https://t.me/smithdev")
+            .setAuthorEmbed("","","")
+            .setFooterEmbed("","")
+            .setImageEmbed("")
+            .setThumbnailEmbed("")
+            .addField("", "", false)
+            .build());
+        dr.sendReport();
+        
+        
         
         
         /*
-        String token = "1952......-6JQ";
+        String token = "19521......-6JQ";
         String id = "@smith_com";
-        String header = "" ;
+        String header = "";
         String subHeader = "This is sub header";
         String body = "Testing TeleReporter lib new update...\nThis is report body message\n"+et.getText().toString();
         String footer = "This is custom footer";
@@ -67,14 +78,6 @@ public class MainActivity extends AppCompatActivity {
         tr.setReportFooter(TeleReporter.USER_INFO, "");
         tr.setReportCallBack(callback);
         tr.sendReport();
-        
-        tr.setReportFooter(TeleReporter.CUSTOM, footer);
-        tr.sendReport();
-        
-        
-            getReport()
-            getReportURL()
-        
         */
     }
 }
