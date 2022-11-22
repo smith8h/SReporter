@@ -7,7 +7,7 @@ public class DiscEmbed {
     private static Footer footer;
     private static Thumbnail thumbnail;
     private static Image image;
-    //private static Author author;
+    private static Author author;
     
     //private static List<Field> fields = new ArrayList<>();
 
@@ -36,11 +36,11 @@ public class DiscEmbed {
         return image;
     }
 
-    /*public Author getAuthorEmbed() {
+    public Author getAuthorEmbed() {
         return author;
     }
 
-    public List<Field> getFields() {
+    /*public List<Field> getFields() {
         return fields;
     }*/
 
@@ -50,6 +50,7 @@ public class DiscEmbed {
         Footer ftr;
         Thumbnail thmb;
         Image img;
+        Author auth;
         
         public Builder setTitle(String ttl) {
             this.ttl = ttl;
@@ -81,12 +82,12 @@ public class DiscEmbed {
             return this;
         }
 
-        /*public Builder setAuthorEmbed(String name, String url, String icon) {
-            author = new Author(name, url, icon);
+        public Builder setAuthorEmbed(String name, String url, String icon) {
+            this.auth = new Author(name, url, icon);
             return this;
         }
 
-        public Builder addField(String name, String value, boolean inline) {
+        /*public Builder addField(String name, String value, boolean inline) {
             fields.add(new Field(name, value, inline));
             return this;
         }*/
@@ -99,6 +100,7 @@ public class DiscEmbed {
             embed.footer = ftr;
             embed.thumbnail = thmb;
             embed.image = img;
+            embed.author = auth;
             return embed;
         }
     }
@@ -144,6 +146,28 @@ public class DiscEmbed {
             return url;
         }
     }
-    
-    
+
+    private static class Author {
+        private String name;
+        private String url;
+        private String iconUrl;
+
+        private Author(String name, String url, String iconUrl) {
+            this.name = name;
+            this.url = url;
+            this.iconUrl = iconUrl;
+        }
+
+        private String getName() {
+            return name;
+        }
+
+        private String getUrl() {
+            return url;
+        }
+
+        private String getIconUrl() {
+            return iconUrl;
+        }
+    }
 }
