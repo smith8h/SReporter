@@ -1,19 +1,13 @@
 package smith.lib.net.reporter;
 
-import android.graphics.Color;
-import java.util.ArrayList;
-import java.util.List;
-
 public class DiscEmbed {
 
     private static String title, description, url;
     
-    private static Color color;
-
     private static Footer footer;
-    //private static ThumbnailEmbed thumbnail;
-    //private static ImageEmbed image;
-    //private static AuthorEmbed author;
+    private static Thumbnail thumbnail;
+    //private static Image image;
+    //private static Author author;
     
     //private static List<Field> fields = new ArrayList<>();
 
@@ -30,19 +24,19 @@ public class DiscEmbed {
         return url;
     }
 
-    public Footer getFooter() {
+    public Footer getFooterEmbed() {
         return footer;
     }
 
-    /*public Thumbnail getThumbnail() {
+    public Thumbnail getThumbnailEmbed() {
         return thumbnail;
     }
 
-    public Image getImage() {
+    /*public Image getImageEmbed() {
         return image;
     }
 
-    public Author getAuthor() {
+    public Author getAuthorEmbed() {
         return author;
     }
 
@@ -53,37 +47,42 @@ public class DiscEmbed {
 
     public static class Builder {
         
+        DiscEmbed embed;
+        String ttl, dsc, ulr;
+        Footer ftr;
+        Thumbnail thmb;
+        
         public Builder setTitle(String ttl) {
-            title = ttl;
+            this.ttl = ttl;
             return this;
         }
 
         public Builder setDescription(String dsc) {
-            description = dsc;
+            this.dsc = dsc;
             return this;
         }
 
         public Builder setUrl(String ulr) {
-            url = ulr;
+            this.ulr = ulr;
             return this;
         }
         
-        public Builder setFooter(String text, String icon) {
-            footer = new Footer(text, icon);
+        public Builder setFooterEmbed(String text, String icon) {
+            this.ftr = new Footer(text, icon);
             return this;
         }
 
-        /*public Builder setThumbnail(String url) {
-            thumbnail = new Thumbnail(url);
+        public Builder setThumbnailEmbed(String url) {
+            this.thmb = new Thumbnail(url);
             return this;
         }
 
-        public Builder setImage(String url) {
+        /*public Builder setImageEmbed(String url) {
             image = new Image(url);
             return this;
         }
 
-        public Builder setAuthor(String name, String url, String icon) {
+        public Builder setAuthorEmbed(String name, String url, String icon) {
             author = new Author(name, url, icon);
             return this;
         }
@@ -92,6 +91,16 @@ public class DiscEmbed {
             fields.add(new Field(name, value, inline));
             return this;
         }*/
+        
+        public DiscEmbed build() {
+            embed = new DiscEmbed();
+            embed.title = ttl;
+            embed.description = dsc;
+            embed.url = ulr;
+            embed.footer = ftr;
+            embed.thumbnail = thmb;
+            return embed;
+        }
     }
 
     private static class Footer {
@@ -107,8 +116,20 @@ public class DiscEmbed {
             return text;
         }
 
-        private String getIconUrl() {
+        private String getIconURL() {
             return iconUrl;
+        }
+    }
+
+    private static class Thumbnail {
+        private String url;
+
+        private Thumbnail(String url) {
+            this.url = url;
+        }
+
+        private String getURL() {
+            return url;
         }
     }
 }

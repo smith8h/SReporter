@@ -2,14 +2,12 @@ package smith.test;
 
 import android.os.Bundle;
 import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import com.itsaky.androidide.logsender.LogSender;
+import smith.lib.net.reporter.DiscEmbed;
 import smith.lib.net.reporter.DiscReporter;
-import smith.lib.net.reporter.TeleReporter;
 import smith.lib.net.reporter.ReporterCallBack;
 
 public class MainActivity extends AppCompatActivity {
@@ -45,17 +43,12 @@ public class MainActivity extends AppCompatActivity {
         dr.setUsername(username);
         dr.setAvatarUrl(avatarURL);
         dr.setContent(content);
-        dr.setReportCallBack(new ReporterCallBack() {
-            @Override public void onFail(String msg) {
-                
-            }
-            
-            @Override public void onSuccess(String msg) {
-                
-            }
-        });
+        dr.setReportCallBack(callback);
         dr.setTts(true);
-        dr.addEmbed(new DiscEmbed());
+        dr.addEmbed(new DiscEmbed.Builder()
+                
+                .build());
+        
         
         /*
         String token = "1952......-6JQ";
