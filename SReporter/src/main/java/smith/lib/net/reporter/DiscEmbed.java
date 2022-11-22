@@ -1,5 +1,8 @@
 package smith.lib.net.reporter;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DiscEmbed {
 
     private static String title, description, url;
@@ -9,7 +12,7 @@ public class DiscEmbed {
     private static Image image;
     private static Author author;
     
-    //private static List<Field> fields = new ArrayList<>();
+    private static List<Field> fields = new ArrayList<>();
 
 
     public String getTitle() {
@@ -40,9 +43,9 @@ public class DiscEmbed {
         return author;
     }
 
-    /*public List<Field> getFields() {
+    public List<Field> getFields() {
         return fields;
-    }*/
+    }
 
 
     public static class Builder {
@@ -51,6 +54,7 @@ public class DiscEmbed {
         Thumbnail thmb;
         Image img;
         Author auth;
+        List<Field> flds = new ArrayList<>();
         
         public Builder setTitle(String ttl) {
             this.ttl = ttl;
@@ -87,10 +91,10 @@ public class DiscEmbed {
             return this;
         }
 
-        /*public Builder addField(String name, String value, boolean inline) {
-            fields.add(new Field(name, value, inline));
+        public Builder addField(String name, String value, boolean inline) {
+            this.flds.add(new Field(name, value, inline));
             return this;
-        }*/
+        }
         
         public DiscEmbed build() {
             DiscEmbed embed = new DiscEmbed();
@@ -101,6 +105,7 @@ public class DiscEmbed {
             embed.thumbnail = thmb;
             embed.image = img;
             embed.author = auth;
+            embed.fields = flds;
             return embed;
         }
     }
@@ -168,6 +173,30 @@ public class DiscEmbed {
 
         private String getIconUrl() {
             return iconUrl;
+        }
+    }
+
+    private static class Field {
+        private String name;
+        private String value;
+        private boolean inline;
+
+        private Field(String name, String value, boolean inline) {
+            this.name = name;
+            this.value = value;
+            this.inline = inline;
+        }
+
+        private String getName() {
+            return name;
+        }
+
+        private String getValue() {
+            return value;
+        }
+
+        private boolean isInline() {
+            return inline;
         }
     }
 }
