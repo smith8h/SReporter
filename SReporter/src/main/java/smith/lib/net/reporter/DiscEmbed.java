@@ -6,7 +6,7 @@ public class DiscEmbed {
     
     private static Footer footer;
     private static Thumbnail thumbnail;
-    //private static Image image;
+    private static Image image;
     //private static Author author;
     
     //private static List<Field> fields = new ArrayList<>();
@@ -32,11 +32,11 @@ public class DiscEmbed {
         return thumbnail;
     }
 
-    /*public Image getImageEmbed() {
+    public Image getImageEmbed() {
         return image;
     }
 
-    public Author getAuthorEmbed() {
+    /*public Author getAuthorEmbed() {
         return author;
     }
 
@@ -46,11 +46,10 @@ public class DiscEmbed {
 
 
     public static class Builder {
-        
-        DiscEmbed embed;
         String ttl, dsc, ulr;
         Footer ftr;
         Thumbnail thmb;
+        Image img;
         
         public Builder setTitle(String ttl) {
             this.ttl = ttl;
@@ -77,12 +76,12 @@ public class DiscEmbed {
             return this;
         }
 
-        /*public Builder setImageEmbed(String url) {
-            image = new Image(url);
+        public Builder setImageEmbed(String url) {
+            this.img = new Image(url);
             return this;
         }
 
-        public Builder setAuthorEmbed(String name, String url, String icon) {
+        /*public Builder setAuthorEmbed(String name, String url, String icon) {
             author = new Author(name, url, icon);
             return this;
         }
@@ -93,12 +92,13 @@ public class DiscEmbed {
         }*/
         
         public DiscEmbed build() {
-            embed = new DiscEmbed();
+            DiscEmbed embed = new DiscEmbed();
             embed.title = ttl;
             embed.description = dsc;
             embed.url = ulr;
             embed.footer = ftr;
             embed.thumbnail = thmb;
+            embed.image = img;
             return embed;
         }
     }
@@ -132,4 +132,18 @@ public class DiscEmbed {
             return url;
         }
     }
+
+    private static class Image {
+        private String url;
+
+        private Image(String url) {
+            this.url = url;
+        }
+
+        private String getUrl() {
+            return url;
+        }
+    }
+    
+    
 }
