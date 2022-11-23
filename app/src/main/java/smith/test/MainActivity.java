@@ -33,10 +33,10 @@ public class MainActivity extends AppCompatActivity {
     public void check(View v) {
         EditText et = findViewById(R.id.et);
         
-        String webhookURL = "";
-        String content = "Some Content";
-        String username = "@sreporter";
-        String avatarURL = "https://te.legra.ph/file/9e44d81148b9436acb0f7.jpg";
+        String webhookURL = "https://discord.com/api/webhooks/1044733778456756346/kf7z_ZRc1w2euOC5EdHqsMX2jMEnJmCFeXubqPgBJep7yOiQRo_839bcPoLBuGI_63WM";
+        String content = "Some Content to fill the report";
+        String username = "SReporter";
+        String avatarURL = "https://te.legra.ph/file/e86668a3699571a74c411.png";
         boolean tts = true;
         
         DiscReporter dr = new DiscReporter(this);
@@ -50,11 +50,12 @@ public class MainActivity extends AppCompatActivity {
             .setDescription("Description")
             .setTitle("Title")
             .setUrl("https://t.me/smithdev")
-            .setAuthorEmbed("","","")
-            .setFooterEmbed("","")
-            .setImageEmbed("")
-            .setThumbnailEmbed("")
-            .addField("", "", false)
+            .setAuthorEmbed("Author smith8h","https://t.me/smithdev","https://te.legra.ph/file/e86668a3699571a74c411.png")
+            .setFooterEmbed("footer embed","https://te.legra.ph/file/e86668a3699571a74c411.png")
+            .setImageEmbed("https://te.legra.ph/file/e86668a3699571a74c411.png")
+            //.setThumbnailEmbed("https://te.legra.ph/file/e86668a3699571a74c411.png")
+            .addField("Field inline", "field value", true)
+            //.addField("field not inline", "field value", false)
             .build());
         dr.sendReport();
         

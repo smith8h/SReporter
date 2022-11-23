@@ -8,9 +8,12 @@
     <string name="tele_reporter_malformed_url">MALFORMED URL</string>
     <string name="tele_reporter_no_internet">NO INTERNET</string>
     
+    <string name="disc_reporter_no_content">NO CONTENT PROVIDED</string>
+    <string name="disc_reporter_no_webhook">NO WEBHOOK PROVIDED</string>
+    
     <string name="tele_reporter_header_title">A New Report Sent from %s App!</string>
     <string name="tele_reporter_message_title">Message:</string>
-    <string name="tele_reporter_footer_title">More Information From User:</string>
+    <string name="tele_reporter_footer_title">More Information:</string>
     
     <string name="tele_reporter_device_model">Device model: %s %s</string>
     <string name="tele_reporter_android_version">Android version: %s (%s)</string>

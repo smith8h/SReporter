@@ -110,7 +110,7 @@ public class DiscEmbed {
         }
     }
 
-    private static class Footer {
+    public static class Footer {
         private String text;
         private String iconUrl;
 
@@ -119,40 +119,40 @@ public class DiscEmbed {
             this.iconUrl = iconUrl;
         }
 
-        private String getText() {
+        public String getText() {
             return text;
         }
 
-        private String getIconURL() {
+        public String getIconURL() {
             return iconUrl;
         }
     }
 
-    private static class Thumbnail {
+    public static class Thumbnail {
         private String url;
 
         private Thumbnail(String url) {
             this.url = url;
         }
 
-        private String getURL() {
+        public String getURL() {
             return url;
         }
     }
 
-    private static class Image {
+    public static class Image {
         private String url;
 
         private Image(String url) {
             this.url = url;
         }
 
-        private String getUrl() {
+        public String getURL() {
             return url;
         }
     }
 
-    private static class Author {
+    public static class Author {
         private String name;
         private String url;
         private String iconUrl;
@@ -163,20 +163,20 @@ public class DiscEmbed {
             this.iconUrl = iconUrl;
         }
 
-        private String getName() {
+        public String getName() {
             return name;
         }
 
-        private String getUrl() {
+        public String getURL() {
             return url;
         }
 
-        private String getIconUrl() {
+        public String getIconURL() {
             return iconUrl;
         }
     }
 
-    private static class Field {
+    public static class Field {
         private String name;
         private String value;
         private boolean inline;
@@ -187,15 +187,15 @@ public class DiscEmbed {
             this.inline = inline;
         }
 
-        private String getName() {
+        public String getName() {
             return name;
         }
 
-        private String getValue() {
+        public String getValue() {
             return value;
         }
 
-        private boolean isInline() {
+        public boolean isInline() {
             return inline;
         }
     }
