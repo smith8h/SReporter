@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
     public void check(View v) {
         EditText et = findViewById(R.id.et);
         
-        String webhookURL = "https://discord.com/api/webhooks/1044733778456756346/kf7z_ZRc1w2euOC5EdHqsMX2jMEnJmCFeXubqPgBJep7yOiQRo_839bcPoLBuGI_63WM";
+        String webhookURL = "https://discord.com/api..........";
         String content = "Some Content to fill the report";
         String username = "SReporter";
         String avatarURL = "https://te.legra.ph/file/e86668a3699571a74c411.png";

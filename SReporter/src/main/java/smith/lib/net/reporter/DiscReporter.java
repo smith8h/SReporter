@@ -64,6 +64,15 @@ public class DiscReporter {
             else if (webhook.isEmpty()) callback.onFail(context.getString(R.string.disc_reporter_no_webhook));
             else {
                 SConnect connect = new SConnect(context);
+                connect.setCallBack(new SConnectCallBack() {
+                    @Override public void response(String response, String tag, HashMap<String, Object> headers) {
+                        callback.onSuccess();
+                    }
+                    
+                    @Override public void responseError(String response, String tag) {
+                        callback.onFail(context.getString(R.string.tele_reporter_failed));
+                    }
+                });
                 
                 params.put("content", this.content);
                 params.put("username", this.username);
@@ -127,23 +136,12 @@ public class DiscReporter {
                     }
 
                     params.put("embeds", embedObjects.toArray());
+                    connect.setParams(params, SConnect.BODY);
                 }
-                
-                connect.setParams(params, SConnect.BODY);
                 
                 headers.put("Content-Type", "application/json");
                 headers.put("User-Agent", "Java-DiscordWebhook-BY-Gelox_");
                 connect.setHeaders(headers);
-                
-                connect.setCallBack(new SConnectCallBack() {
-                    @Override public void response(String response, String tag, HashMap<String, Object> headers) {
-                        callback.onSuccess(context.getString(R.string.tele_reporter_sent));
-                    }
-                    
-                    @Override public void responseError(String response, String tag) {
-                        callback.onFail(context.getString(R.string.tele_reporter_failed));
-                    }
-                });
                 
                 connect.connect(SConnect.POST, webhook, "sendingDiscordReport");
             }

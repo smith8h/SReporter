@@ -85,7 +85,7 @@ public class TeleReporter {
             SConnect connect = new SConnect(context);
             connect.setCallBack(new SConnectCallBack() {
                 @Override public void response(String response, String tag, HashMap<String, Object> headers) {
-                    callback.onSuccess(successMsg);
+                    callback.onSuccess();
                 }
                 
                 @Override public void responseError(String message, String tag) {
@@ -108,7 +108,8 @@ public class TeleReporter {
 		String finalUrl = "";
 		try {
 			finalUrl = "https://api.telegram.org/bot" + botToken
-		    + "/sendMessage?chat_id=" + chatUsername + "&text=" + URLEncoder.encode(getFinalReport(), StandardCharsets.UTF_8.toString()) + "&parse_mode=Markdown&disable_web_page_preview=true";
+		    + "/sendMessage?chat_id=" + chatUsername + "&text=" + URLEncoder.encode(getFinalReport(), StandardCharsets.UTF_8.toString())
+            + "&parse_mode=Markdown&disable_web_page_preview=true";
 		} catch (Exception e) {}
 		return finalUrl;
 	}
