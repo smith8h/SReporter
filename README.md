@@ -14,6 +14,7 @@
 - [How to implement (Documentations)](#documentations)
   - [The use of TeleReporter](#telereporter)
   - [The use of DiscReporter](#discreporter)
+  - [The implementation of CallBack Interface](#callback)
 - [Support library improvements (Donations)](#donations)
 
 <br/>
@@ -45,9 +46,61 @@ Well with SReporter you can send them properly.
 Follow the instructions below on how to implement `TeleReporter` and `DiscReporter` classes:
 
 ## TeleReporter
+The TeleReport composed of Header, SubHeader ( __optional__ ), Message or Body and Footer. As in the image bellow:
+<p align="center">
+    <img src="https://te.legra.ph/file/56186f1c936c7e2b813c5.jpg" style="width: 80%;" />
+</p>
+<br/>
+
+- Create new object of TeleReporter class:
+  ```java
+      TeleReporter tr = new TeleReporter(this);
+  ```
+- Now set your Telegram bot token:
+  ```java
+      tr.setBotToken("19521... ...-6JQ");
+  ```
+  > 📃 Go to [@BotFather](https://botfather.t.me) and create or surf your bots and get its token
+- Now set your target chat id (or username):
+  ```java
+      tr.setTargetChatId("@smith_com");
+      // or chat id (1323671558)
+  ```
+- Set Header for the report:
+  ```java
+      tr.setReportHeader("Report Title (Report Header)...");
+      // You can leave it blank for default title
+  ```
+- Set SubHeader for the report:
+  ```java
+      tr.setReportSubHeader("SubTitle (SubHeader)...");
+      // You can leave it blank if you don't want it to be in the report
+  ```
+- Set the content of the report:
+  ```java
+      tr.setReportMessage("Report Content...");
+  ```
+- Set the footer of the report:
+  ```java
+      tr.setReportFooter(TeleReporter.USER_INFO, "");
+      // Default footer is the info of user's device, build, app used, app version...
+      
+      tr.setReportFooter(TeleReporter.CUSTOM, "Custom Footer...");
+      // Custom footer info (additional note) if you don't need to attach device & app info of the user
+  ```
+- Now set the callback interface to get notified of errors or successes of sending reports:
+  ```java
+      tr.setReportCallBack(callback);
+  ```
+  > Head straight to [CallBack Implementation](#callback) to see how to implement the callback for TeleReporter.
+- Now send the report to your chat/group
+  ```java
+      tr.sendReport();
+  ```
 
 ## DiscReporter
 
+## CallBack
 
 <br/>
 
