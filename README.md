@@ -101,6 +101,19 @@ The TeleReport composed of Header, SubHeader ( __optional__ ), Message or Body a
 ## DiscReporter
 
 ## CallBack
+```java
+    ReporterCallBack callback = new ReporterCallBack() {
+        @Override
+        public void onSuccess() {
+            Toast.makeText(context, "REPORT SENT SUCCEESSFULLY!", Toast.LENGTH_SHORT).show();
+        }
+        
+        @Override
+        public void onFail(String message) {
+            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        }
+    };
+```
 
 <br/>
 
