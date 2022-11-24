@@ -14,8 +14,8 @@ import smith.lib.net.reporter.TeleReporter;
 public class MainActivity extends AppCompatActivity {
     
     ReporterCallBack callback = new ReporterCallBack() {
-        @Override public void onSuccess(String message) {
-            Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();
+        @Override public void onSuccess() {
+            Toast.makeText(MainActivity.this, "REPORT SUCCEED!", Toast.LENGTH_SHORT).show();
         }
         @Override public void onFail(String message) {
             Toast.makeText(MainActivity.this, message, Toast.LENGTH_SHORT).show();

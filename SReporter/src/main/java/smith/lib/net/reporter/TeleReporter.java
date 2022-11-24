@@ -21,7 +21,7 @@ public class TeleReporter {
 	private String botToken, chatUsername;
     private String reportMessage, reportHeader, reportSubHeader, reportFooter;
     private String deviceModel, androidVersion, appVersion, appName;
-    private String noTokenMsg, noUsernameMsg, failMsg, malformedUrl, successMsg, noInternet;
+    private String noTokenMsg, noUsernameMsg, failMsg, malformedUrl, noInternet;
 	
     private ReporterCallBack callback;
     private Context context;
@@ -33,7 +33,6 @@ public class TeleReporter {
         noTokenMsg = context.getString(R.string.tele_reporter_no_token_msg);
         noUsernameMsg = context.getString(R.string.tele_reporter_no_id_msg);
         failMsg = context.getString(R.string.tele_reporter_failed);
-        successMsg = context.getString(R.string.tele_reporter_sent);
 		reportHeader = context.getString(R.string.tele_reporter_header_title, getAppName());
         reportMessage = context.getString(R.string.tele_reporter_no_msg);
     	noInternet = context.getString(R.string.tele_reporter_no_internet);

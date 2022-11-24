@@ -1,15 +1,14 @@
 <resources>
 
-    <string name="tele_reporter_no_token_msg">NO BOT TOKEN PROVIDED</string>
-    <string name="tele_reporter_no_id_msg">NO TARGET CHAT USERNAME/ID</string>
-    <string name="tele_reporter_sent">REPORT SUCCEED!</string>
-    <string name="tele_reporter_failed">REPORT FAILED!</string>
+    <string name="tele_reporter_no_token_msg">NO BOT TOKEN PROVIDED!</string>
+    <string name="tele_reporter_no_id_msg">NO TARGET CHAT USERNAME/ID PROVIDED!</string>
+    <string name="tele_reporter_failed">REPORT SEND FAILED!, CHECK YOUR INTERNET.</string>
     <string name="tele_reporter_no_msg">NO REPORT FROM THE USER!</string>
-    <string name="tele_reporter_malformed_url">MALFORMED URL</string>
-    <string name="tele_reporter_no_internet">NO INTERNET</string>
+    <string name="tele_reporter_malformed_url">MALFORMED URL!</string>
+    <string name="tele_reporter_no_internet">NO INTERNET!</string>
     
-    <string name="disc_reporter_no_content">NO CONTENT PROVIDED</string>
-    <string name="disc_reporter_no_webhook">NO WEBHOOK PROVIDED</string>
+    <string name="disc_reporter_no_content">NO CONTENT PROVIDED!</string>
+    <string name="disc_reporter_no_webhook">NO WEBHOOK PROVIDED!</string>
     
     <string name="tele_reporter_header_title">A New Report Sent from %s App!</string>
     <string name="tele_reporter_message_title">Message:</string>
