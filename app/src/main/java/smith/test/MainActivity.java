@@ -49,13 +49,13 @@ public class MainActivity extends AppCompatActivity {
         dr.addEmbed(new DiscEmbed.Builder()
             .setDescription("Description")
             .setTitle("Title")
-            .setUrl("https://t.me/smithdev")
+            .setURL("https://t.me/smithdev")
             .setAuthorEmbed("Author smith8h","https://t.me/smithdev","https://te.legra.ph/file/e86668a3699571a74c411.png")
             .setFooterEmbed("footer embed","https://te.legra.ph/file/e86668a3699571a74c411.png")
             .setImageEmbed("https://te.legra.ph/file/e86668a3699571a74c411.png")
-            //.setThumbnailEmbed("https://te.legra.ph/file/e86668a3699571a74c411.png")
-            .addField("Field inline", "field value", true)
-            //.addField("field not inline", "field value", false)
+            .setThumbnailEmbed("https://te.legra.ph/file/e86668a3699571a74c411.png")
+            .addFieldEmbed("Field inline", "field value", true)
+            .addFieldEmbed("field not inline", "field value", false)
             .build());
         dr.sendReport();
         

@@ -1,3 +1,18 @@
+    /*
+	*
+	*
+	*    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
+	*
+	*	TELEGRAM : @SMITHDEV
+	*	YOUTUBE : HUSSEIN SMITH (@SMITH8H)
+	*
+	*	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
+	*	WITHOT ANY PERMISSION FROM ME PERSONALLY..
+	*	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, 2022.
+	*
+	*
+	*/
+    
 package smith.lib.net.reporter;
 
 import android.content.Context;
@@ -17,9 +32,12 @@ public class DiscReporter {
     private String username = "SReporter";
     private String avatarUrl = "https://te.legra.ph/file/e86668a3699571a74c411.png";
     
-    private boolean tts;
+    private boolean tts = false;
+    
     private Context context;
+    
     private List<DiscEmbed> embeds = new ArrayList<>();
+    
     private ReporterCallBack callback;
     
     private HashMap<String, Object> headers = new HashMap<>();

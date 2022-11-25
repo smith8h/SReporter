@@ -1,3 +1,18 @@
+    /*
+	*
+	*
+	*    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
+	*
+	*	TELEGRAM : @SMITHDEV
+	*	YOUTUBE : HUSSEIN SMITH (@SMITH8H)
+	*
+	*	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
+	*	WITHOT ANY PERMISSION FROM ME PERSONALLY..
+	*	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, 2022.
+	*
+	*
+	*/
+
 package smith.lib.net.reporter;
 
 import java.util.ArrayList;
@@ -66,7 +81,7 @@ public class DiscEmbed {
             return this;
         }
 
-        public Builder setUrl(String ulr) {
+        public Builder setURL(String ulr) {
             this.ulr = ulr;
             return this;
         }
@@ -91,7 +106,7 @@ public class DiscEmbed {
             return this;
         }
 
-        public Builder addField(String name, String value, boolean inline) {
+        public Builder addFieldEmbed(String name, String value, boolean inline) {
             this.flds.add(new Field(name, value, inline));
             return this;
         }

@@ -14,6 +14,7 @@
 - [How to implement (Documentations)](#documentations)
   - [The use of TeleReporter](#telereporter)
   - [The use of DiscReporter](#discreporter)
+    - [DiscReporter Embeds](#discreporter-embeds)
   - [The implementation of CallBack Interface](#callback)
 - [Support library improvements (Donations)](#donations)
 
@@ -97,8 +98,94 @@ The TeleReport composed of Header, SubHeader ( __optional__ ), Message or Body a
   ```java
       tr.sendReport();
   ```
-
+  
 ## DiscReporter
+The DiscReport composed of main report content ( consider it like a header or the main message if you don't need to use the embeds ),
+Embeds ( __optional__, ImageEmbed/AuthorEmbed/ThumbnailEmbed/FooterEmbed/Fields ).
+As in the image bellow:
+<p align="center">
+    <img src="https://te.legra.ph/file/458fafdd09484074f67c5.jpg" style="width: 80%;" />
+</p>
+<br/>
+
+- Create new object of TeleReporter class:
+  ```java
+      DiscReporter dr = new DiscReporter(this);
+  ```
+- Now set your Discord server's webhook url:
+  ```java
+      dr.setWeebHook("https://discord.com/api...");
+  ```
+  > 📃 See [instructions here](https://support.discord.com/hc/en-us/articles/228383668) to create new webhook for your Discord server.
+- Now set a username for webhook:
+  ```java
+      dr.setUsername("SReporter");
+      // optional, put your desired one instead
+  ```
+- Set an icon for webhook:
+  ```java
+      dr.setAvatarUrl("https://te.legra.ph/file/e86668a3699571a74c411.png");
+      // default is the lib icon
+  ```
+- Now set your content of the report, either as title if you want to use embeds or as main content if you won't:
+  ```java
+      dr.setContent("Content text...");
+  ```
+- If you want to set tts to the report:
+  ```java
+      dr.setTts(true);
+      // default is false
+  ```
+- Now if you want to add embeds:
+  ```java
+      dr.addEmbed(embed)
+      // you can add as many as you need
+  ```
+  > Head straight to [DiscReporter Embeds](#discreporter-embeds) to see how to implement embeds for DiscReporter.
+- Now set the callback interface to get notified of errors or successes of sending reports:
+  ```java
+      dr.setReportCallBack(callback);
+  ```
+  > Head straight to [CallBack Implementation](#callback) to see how to implement the callback for DiscReporter.
+- Now send the report to your server:
+  ```java
+      dr.sendReport();
+  ```
+  
+<br/>
+
+## DiscReporter Embeds
+> You can dismiss using the embeds and just rely on title, description and url
+> Also you can customize it to your prefers! considring title, author, thumbnail and without the inline fields and footer... etc.
+
+```java
+    DiscEmbed embed = new DiscEmbed.Builder()
+            .setTitle("Title")
+            .setDescription("Description")
+            .setURL("https://t.me/smithdev")
+            
+            
+            // author name, author url, author icon
+            .setAuthorEmbed("Name","https://t.me/smithdev","https://te.legra.ph/file/e86668a3699571a74c411.png")
+            
+            // footer text, footer icon
+            .setFooterEmbed("thank in advance","https://te.legra.ph/file/e86668a3699571a74c411.png")
+            
+            // image url
+            .setImageEmbed("https://te.legra.ph/file/e86668a3699571a74c411.png")
+            
+            // thumbnail url
+            .setThumbnailEmbed("https://te.legra.ph/file/e86668a3699571a74c411.png")
+            
+            // inline fields
+            .addFieldEmbed("Field inline", "field value", true)
+            .addFieldEmbed("Field not inline", "field value", false)
+            
+            
+            .build());
+```
+
+<br/>
 
 ## CallBack
 ```java
@@ -125,9 +212,8 @@ Your donation is highly appreciated. Thank you!
 You can **choose what you want to donate**, all donations are awesome!</br>
 <br/>
 
-[![PayPal](https://img.shields.io/badge/PayPal-00457C?style=for-the-badge&logo=paypal&logoColor=white)](https://www.paypal.me/husseinshakir)
 [![Buy me a coffee](https://img.shields.io/badge/Buy_Me_A_Coffee-FFDD00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://www.buymeacoffee.com/HusseinShakir)
-[![Ko-fi](https://img.shields.io/badge/Ko--fi-F16061?style=for-the-badge&logo=ko-fi&logoColor=white)](https://ko-fi.com/husseinsmith)
+
 <br/>
 
 <p align="center">
