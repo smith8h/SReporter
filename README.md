@@ -33,7 +33,7 @@ allprojects {
 > **Step 2.** Add the dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.smith8h:SReporter:v1.0'
+    implementation 'com.github.smith8h:SReporter:v2.0'
 }
 ```
 
