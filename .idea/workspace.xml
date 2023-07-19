@@ -9,8 +9,9 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e8848c8-6509-4f21-b60a-cbd7cf8d3d3e" name="Changes" comment="- Files Cleanup">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0e8848c8-6509-4f21-b60a-cbd7cf8d3d3e" name="Changes" comment="- Setup GitHub Actions">
+      <change beforePath="$PROJECT_DIR$/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/AndroidManifest.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -144,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689789515848</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="- Setup GitHub Actions">
+      <created>1689789751238</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1689789751238</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -163,6 +171,7 @@
     <MESSAGE value="- Update SConnect library to v3.2" />
     <MESSAGE value="- Added info of how to get target topic id." />
     <MESSAGE value="- Files Cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Files Cleanup" />
+    <MESSAGE value="- Setup GitHub Actions" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Setup GitHub Actions" />
   </component>
 </project>
