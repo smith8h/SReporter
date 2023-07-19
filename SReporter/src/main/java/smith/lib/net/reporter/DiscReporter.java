@@ -1,5 +1,6 @@
 package smith.lib.net.reporter;
 
+import android.app.Activity;
 import android.content.Context;
 import java.util.*;
 import smith.lib.net.*;
@@ -13,14 +14,14 @@ public class DiscReporter {
     
     private boolean tts = false;
     
-    private Context context;
+    private final Context context;
     
-    private List<DiscEmbed> embeds = new ArrayList<>();
+    private final List<DiscEmbed> embeds = new ArrayList<>();
     
     private ReporterCallBack callback;
     
-    private HashMap<String, Object> headers = new HashMap<>();
-    private HashMap<String, Object> params = new HashMap<>();
+    private final HashMap<String, Object> headers = new HashMap<>();
+    private final HashMap<String, Object> params = new HashMap<>();
     
     public DiscReporter(Context context) {
         this.context = context;
@@ -55,31 +56,30 @@ public class DiscReporter {
     }
 
     public void sendReport() {
-        if (!SConnect.isDeviceConnected(context)) callback.onFail(context.getString(R.string.tele_reporter_no_internet));
+        if (!SConnect.isDeviceConnected(context)) callback.onFailure(context.getString(R.string.tele_reporter_no_internet));
         else {
-            if (content == null) callback.onFail(context.getString(R.string.disc_reporter_no_content));
-            else if (webhook.isEmpty()) callback.onFail(context.getString(R.string.disc_reporter_no_webhook));
+            if (content == null) callback.onFailure(context.getString(R.string.disc_reporter_no_content));
+            else if (webhook.isEmpty()) callback.onFailure(context.getString(R.string.disc_reporter_no_webhook));
             else {
-                SConnect connect = new SConnect(context);
-                connect.setCallBack(new SConnectCallBack() {
-                    @Override public void response(String response, String tag, HashMap<String, Object> headers) {
+                SConnect connect = SConnect.with((Activity) context).callback(new SConnectCallBack() {
+                    @Override public void onSuccess(SResponse response, String tag, Map<String, Object> headers) {
                         callback.onSuccess();
                     }
                     
-                    @Override public void responseError(String response, String tag) {
-                        callback.onFail(context.getString(R.string.tele_reporter_failed));
+                    @Override public void onFailure(SResponse response, String tag) {
+                        callback.onFailure(context.getString(R.string.tele_reporter_failed));
                     }
                 });
                 
-                params.put("content", this.content);
-                params.put("username", this.username);
-                params.put("avatar_url", this.avatarUrl);
-                params.put("tts", this.tts);
+                params.put("content", content);
+                params.put("username", username);
+                params.put("avatar_url", avatarUrl);
+                params.put("tts", tts);
                 
-                if (!this.embeds.isEmpty()) {
+                if (!embeds.isEmpty()) {
                     List<HashMap<String, Object>> embedObjects = new ArrayList<>();
 
-                    for (DiscEmbed embed : this.embeds) {
+                    embeds.forEach(embed -> {
                         HashMap<String, Object> embedObject = new HashMap<>();
 
                         embedObject.put("title", embed.getTitle());
@@ -130,17 +130,15 @@ public class DiscReporter {
 
                         embedObject.put("fields", jsonFields.toArray());
                         embedObjects.add(embedObject);
-                    }
+                    });
 
                     params.put("embeds", embedObjects.toArray());
-                    connect.setParams(params, SConnect.BODY);
+                    connect.params(params, SConnect.PARAM);
                 }
                 
                 headers.put("Content-Type", "application/json");
-                headers.put("User-Agent", "Java-DiscordWebhook-BY-Gelox_");
-                connect.setHeaders(headers);
-                
-                connect.connect(SConnect.POST, webhook, "sendingDiscordReport");
+                headers.put("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/97.0.4692.99 Safari/537.36");
+                connect.headers(headers).tag("SendingDiscordReport").post();
             }
         }
     }
