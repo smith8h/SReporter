@@ -66,6 +66,10 @@ The TeleReport composed of Header, SubHeader ( __optional__ ), Message or Body a
       tr.setTargetChatId("@smith_com");
       // or chat id (1323671558)
   ```
+  - (Optional) to send message to specific topic in your super group, set target topic (Thread Message ID). You need to go through your topic (To when you initialized the topic) and get the info of this message "Topic Created..." as json and copy its message_thread_id and paste it here:
+  ```java
+      tr.setTargetChatTopic(1234567890);
+  ```
 - Set Header for the report:
   ```java
       tr.setReportHeader("Report Title (Report Header)...");
