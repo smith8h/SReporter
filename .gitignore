@@ -1,10 +1,4 @@
-*.iml
-.DS_Store
-/captures
-.externalNativeBuild
-.cxx
-.nomedia
 /build-cache
 /build
 /.gradle
-local.properties!
+local.properties
