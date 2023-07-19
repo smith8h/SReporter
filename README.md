@@ -8,8 +8,7 @@
 
 <br/>
 
-# Contents
-
+# Content
 - [How to setup](#setup)
 - [How to implement (Documentations)](#documentations)
   - [The use of TeleReporter](#telereporter)
@@ -61,7 +60,7 @@ The TeleReport composed of Header, SubHeader ( __optional__ ), Message or Body a
   ```java
       tr.setBotToken("19521... ...-6JQ");
   ```
-  > 📃 Go to [@BotFather](https://botfather.t.me) and create or surf your bots and get its token
+  > 📃 Go to [Telegram BotFather](https://botfather.t.me) and create or surf your bots and get its token
 - Now set your target chat id (or username):
   ```java
       tr.setTargetChatId("@smith_com");
@@ -156,14 +155,13 @@ As in the image bellow:
 
 ## DiscReporter Embeds
 > You can dismiss using the embeds and just rely on title, description and url
-> Also you can customize it to your prefers! considring title, author, thumbnail and without the inline fields and footer... etc.
+> Also you can customize it to your prefers! considering title, author, thumbnail and without the inline fields and footer... etc.
 
 ```java
     DiscEmbed embed = new DiscEmbed.Builder()
             .setTitle("Title")
             .setDescription("Description")
             .setURL("https://t.me/smithdev")
-            
             
             // author name, author url, author icon
             .setAuthorEmbed("Name","https://t.me/smithdev","https://te.legra.ph/file/e86668a3699571a74c411.png")
@@ -177,10 +175,8 @@ As in the image bellow:
             // thumbnail url
             .setThumbnailEmbed("https://te.legra.ph/file/e86668a3699571a74c411.png")
             
-            // inline fields
-            .addFieldEmbed("Field inline", "field value", true)
-            .addFieldEmbed("Field not inline", "field value", false)
-            
+            // inline fields (Copy on click)
+            .addFieldEmbed("Field inline", "field value")
             
             .build());
 ```
@@ -196,8 +192,8 @@ As in the image bellow:
         }
         
         @Override
-        public void onFail(String message) {
-            Toast.makeText(context, message, Toast.LENGTH_SHORT).show();
+        public void onFailure(String failureMessage) {
+            Toast.makeText(context, failureMessage, Toast.LENGTH_SHORT).show();
         }
     };
 ```

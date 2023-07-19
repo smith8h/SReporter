@@ -1,14 +1,22 @@
 plugins {
     id 'com.android.library'
+    id 'maven-publish'
 }
+
+def artifactId = "SReporter"
+def groupId = "smith.lib"
 
 android {
     namespace 'smith.lib.net.reporter'
+    
     compileSdk 33
+    buildToolsVersion '33.0.2'
 
     defaultConfig {
-        minSdk 21
+        minSdk 23
         targetSdk 33
+        versionCode 1
+        versionName '1.0'
     }
 
     buildTypes {
@@ -17,9 +25,30 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    
+    compileOptions {
+		sourceCompatibility JavaVersion.VERSION_17
+		targetCompatibility JavaVersion.VERSION_17
+	}
+	
+	buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-    implementation 'com.github.smith8h:SConnect:v1.0'
-    implementation 'androidx.appcompat:appcompat:1.4.2'
+    implementation 'com.github.smith8h:SConnect:v3.2'
+}
+
+project.afterEvaluate {
+    publishing {
+        publications {
+            library(MavenPublication) {
+                setGroupId groupId
+                setArtifactId artifactId
+                version android.defaultConfig.versionName
+                artifact bundleReleaseAar
+            }
+        }
+    }
 }

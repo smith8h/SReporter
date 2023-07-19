@@ -1,29 +1,8 @@
-    /*
-	*
-	*
-	*    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
-	*
-	*	TELEGRAM : @SMITHDEV
-	*	YOUTUBE : HUSSEIN SMITH (@SMITH8H)
-	*
-	*	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
-	*	WITHOT ANY PERMISSION FROM ME PERSONALLY..
-	*	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, 2022.
-	*
-	*
-	*/
-    
 package smith.lib.net.reporter;
 
 import android.content.Context;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import smith.lib.net.SConnect;
-import smith.lib.net.SConnectCallBack;
-import smith.lib.net.reporter.DiscEmbed;
-import smith.lib.net.reporter.Json;
-import smith.lib.net.reporter.ReporterCallBack;
+import java.util.*;
+import smith.lib.net.*;
 
 public class DiscReporter {
     

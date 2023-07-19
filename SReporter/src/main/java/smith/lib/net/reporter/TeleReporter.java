@@ -1,49 +1,36 @@
-    /*
-	*
-	*
-	*    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
-	*
-	*	TELEGRAM : @SMITHDEV
-	*	YOUTUBE : HUSSEIN SMITH
-	*
-	*	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
-	*	WITHOT ANY PERMISSION FROM ME PERSONALLY..
-	*	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, 2022.
-	*
-	*
-	*/
-
 package smith.lib.net.reporter;
 
+import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
+import android.content.pm.*;
 import android.os.Build;
-import java.net.MalformedURLException;
-import java.net.URL;
+import androidx.annotation.NonNull;
+import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.net.URLEncoder;
 import java.util.HashMap;
-import smith.lib.net.SConnect;
-import smith.lib.net.SConnectCallBack;
+import java.util.Map;
 
+import smith.lib.net.*;
+
+@SuppressLint("Unused")
 public class TeleReporter {
 	
     public static final int USER_INFO = 0;
     public static final int CUSTOM = 1;
     
 	private String botToken, chatUsername;
+    private int targetTopic = 0;
     private String reportMessage, reportHeader, reportSubHeader, reportFooter;
     private String deviceModel, androidVersion, appVersion, appName;
-    private String noTokenMsg, noUsernameMsg, failMsg, malformedUrl, noInternet;
+    private final String noTokenMsg, noUsernameMsg, failMsg, malformedUrl, noInternet;
 	
     private ReporterCallBack callback;
-    private Context context;
-	private PackageManager manager;
+    private final Context context;
     private PackageInfo info;
     
-    public TeleReporter(Context context) {
+    public TeleReporter(@NonNull Context context) {
         this.context = context;
         noTokenMsg = context.getString(R.string.tele_reporter_no_token_msg);
         noUsernameMsg = context.getString(R.string.tele_reporter_no_id_msg);
@@ -53,11 +40,11 @@ public class TeleReporter {
     	noInternet = context.getString(R.string.tele_reporter_no_internet);
         malformedUrl = context.getString(R.string.tele_reporter_malformed_url);
         try {
-            manager = context.getPackageManager();
+            PackageManager manager = context.getPackageManager();
             info = manager.getPackageInfo(context.getPackageName(), PackageManager.GET_ACTIVITIES);
-        } catch (PackageManager.NameNotFoundException e) {}
+        } catch (PackageManager.NameNotFoundException ignored) {}
     }
-        
+
     public void setBotToken(String botToken) {
         this.botToken = botToken;
     }
@@ -65,8 +52,12 @@ public class TeleReporter {
     public void setTargetChatId(String chatUsername) {
         this.chatUsername = chatUsername;
     }
-        
-    public void setReportHeader(String reportHeader) {
+
+    public void setTargetChatTopic(int targetTopic) {
+        this.targetTopic = targetTopic;
+    }
+
+    public void setReportHeader(@NonNull String reportHeader) {
         if (!reportHeader.isEmpty()) this.reportHeader = reportHeader;
     }
     
@@ -80,8 +71,8 @@ public class TeleReporter {
     
     public void setReportFooter(int footerType, String reportFooter) {
         switch (footerType) {
-            case USER_INFO : this.reportFooter = getUserInfo(); break;
-            case CUSTOM : this.reportFooter = reportFooter; break;
+            case USER_INFO -> this.reportFooter = getUserInfo();
+            case CUSTOM -> this.reportFooter = reportFooter;
         }
     }
 	
@@ -90,24 +81,24 @@ public class TeleReporter {
 	}
     
     public void sendReport() {
-        if (botToken.isEmpty()) callback.onFail(noTokenMsg);
-		else if (chatUsername.isEmpty()) callback.onFail(noUsernameMsg);
-		else if (!SConnect.isDeviceConnected(context)) callback.onFail(noInternet);
+        if (botToken.isEmpty()) callback.onFailure(noTokenMsg);
+		else if (chatUsername.isEmpty()) callback.onFailure(noUsernameMsg);
+		else if (!SConnect.isDeviceConnected(context)) callback.onFailure(noInternet);
 		else try {
             String url = getFinalURL();
             URL u = new URL(url);
-            SConnect connect = new SConnect(context);
-            connect.setCallBack(new SConnectCallBack() {
-                @Override public void response(String response, String tag, HashMap<String, Object> headers) {
-                    callback.onSuccess();
-                }
-                
-                @Override public void responseError(String message, String tag) {
-                    callback.onFail(failMsg);
-                }
-            });
-            connect.connect(SConnect.GET, url, "sendTeleReport");
-        } catch (MalformedURLException e) { callback.onFail(malformedUrl); }
+            SConnect.with((Activity) context)
+                    .callback(new SConnectCallBack() {
+                        @Override public void onSuccess(SResponse response, String tag, Map<String, Object> responseHeaders) {
+                            callback.onSuccess();
+                        }
+
+                        @Override public void onFailure(SResponse response, String tag) {
+                            callback.onFailure(failMsg);
+                        }
+                    })
+                    .url(url).tag("sendTeleReport").get();
+        } catch (MalformedURLException e) { callback.onFailure(malformedUrl); }
     }
     
     public String getReport() {
@@ -118,35 +109,45 @@ public class TeleReporter {
         return getFinalURL();
     }
 	
-	private String getFinalURL() {
-		String finalUrl = "";
-		try {
-			finalUrl = "https://api.telegram.org/bot" + botToken
-		    + "/sendMessage?chat_id=" + chatUsername + "&text=" + URLEncoder.encode(getFinalReport(), StandardCharsets.UTF_8.toString())
-            + "&parse_mode=Markdown&disable_web_page_preview=true";
-		} catch (Exception e) {}
-		return finalUrl;
+	@NonNull
+    private String getFinalURL() {
+        StringBuilder finalUrl = new StringBuilder();
+
+        finalUrl.append("https://api.telegram.org/bot").append(botToken);
+        finalUrl.append("/sendMessage?chat_id=").append(chatUsername);
+
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU)
+                finalUrl.append("&text=").append(URLEncoder.encode(getFinalReport(), StandardCharsets.UTF_8));
+            else finalUrl.append("&text=").append(URLEncoder.encode(getFinalReport(), StandardCharsets.UTF_8.toString()));
+        } catch (Exception ignored) {}
+
+        if (targetTopic > 0) finalUrl.append("&message_thread_id=").append(targetTopic);
+
+        finalUrl.append("&parse_mode=MarkDown&disable_web_page_preview=true");
+
+        return finalUrl.toString();
 	}
 	
-	private String getFinalReport() {
-		StringBuffer buffer = new StringBuffer();
+	@NonNull
+    private String getFinalReport() {
+		StringBuilder buffer = new StringBuilder();
         
-        buffer.append("**" + reportHeader + "**\n");
-        if (!reportSubHeader.isEmpty()) buffer.append(reportSubHeader + "\n");
-        buffer.append("\n**" + context.getString(R.string.tele_reporter_message_title) + "**\n");
-		buffer.append(reportMessage + "\n\n");
-        buffer.append("**" + context.getString(R.string.tele_reporter_footer_title) + "**\n");
+        buffer.append("**").append(reportHeader).append("**\n");
+        if (!reportSubHeader.isEmpty()) buffer.append(reportSubHeader).append("\n");
+        buffer.append("\n**").append(context.getString(R.string.tele_reporter_message_title)).append("**\n");
+		buffer.append(reportMessage).append("\n\n");
+        buffer.append("**").append(context.getString(R.string.tele_reporter_footer_title)).append("**\n");
         buffer.append(reportFooter);
         
         return buffer.toString();
 	}
 	
-	private String getUserInfo() {
-        StringBuffer buffer = new StringBuffer();
-        buffer.append(context.getString(R.string.tele_reporter_device_model, Build.MANUFACTURER, Build.MODEL) + "\n");
-        buffer.append(context.getString(R.string.tele_reporter_android_version, Build.VERSION.RELEASE, Build.VERSION.CODENAME) + "\n");
-        buffer.append(context.getString(R.string.tele_reporter_app_used, getAppName(), info.versionName));
-        return buffer.toString();
+	@NonNull
+    private String getUserInfo() {
+        return context.getString(R.string.tele_reporter_device_model, Build.MANUFACTURER, Build.MODEL) + "\n" +
+                context.getString(R.string.tele_reporter_android_version, Build.VERSION.RELEASE, Build.VERSION.CODENAME) + "\n" +
+                context.getString(R.string.tele_reporter_app_used, getAppName(), info.versionName);
     }
 	
 	private String getAppName() {
@@ -155,18 +156,17 @@ public class TeleReporter {
 		return stringId == 0 ? applicationInfo.nonLocalizedLabel.toString() : context.getString(stringId);
 	}
     
+    @NonNull
     @Override
     public String toString() {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Bot Token        | " + botToken + "\n");
-        builder.append("Target Chat      | " + chatUsername + "\n");
-        builder.append("Report Header    | " + reportHeader + "\n");
-        builder.append("Report SubHeader | " + reportSubHeader + "\n");
-        builder.append("Report Body      | " + reportMessage + "\n");
-        builder.append("Report Footer    | " + reportFooter + "\n");
-        builder.append("Device Info.     | " + getUserInfo() + "\n");
-        builder.append("Used App Name    | " + getAppName() + "\n");
-        builder.append("Final API URL    | " + getFinalURL());
-        return builder.toString();
+        return "Bot Token        | " + botToken + "\n" +
+                "Target Chat      | " + chatUsername + "\n" +
+                "Report Header    | " + reportHeader + "\n" +
+                "Report SubHeader | " + reportSubHeader + "\n" +
+                "Report Body      | " + reportMessage + "\n" +
+                "Report Footer    | " + reportFooter + "\n" +
+                "Device Info.     | " + getUserInfo() + "\n" +
+                "Used App Name    | " + getAppName() + "\n" +
+                "Final API URL    | " + getFinalURL();
     }
 }

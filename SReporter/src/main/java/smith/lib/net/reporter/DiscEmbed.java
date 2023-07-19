@@ -1,18 +1,3 @@
-    /*
-	*
-	*
-	*    THIS LIBRARY CREATED BY HUSSEIN SHAKIR (SMITH)
-	*
-	*	TELEGRAM : @SMITHDEV
-	*	YOUTUBE : HUSSEIN SMITH (@SMITH8H)
-	*
-	*	YOU GUYS ARE NOT ALLOWED TO MODIFY THIS LIBRARY,
-	*	WITHOT ANY PERMISSION FROM ME PERSONALLY..
-	*	ALL RIGHTS RESERVED © HUSSEIN SHAKIR, 2022.
-	*
-	*
-	*/
-
 package smith.lib.net.reporter;
 
 import java.util.ArrayList;
@@ -106,28 +91,28 @@ public class DiscEmbed {
             return this;
         }
 
-        public Builder addFieldEmbed(String name, String value, boolean inline) {
-            this.flds.add(new Field(name, value, inline));
+        public Builder addFieldEmbed(String name, String value) {
+            this.flds.add(new Field(name, value, true));
             return this;
         }
         
         public DiscEmbed build() {
             DiscEmbed embed = new DiscEmbed();
-            embed.title = ttl;
-            embed.description = dsc;
-            embed.url = ulr;
-            embed.footer = ftr;
-            embed.thumbnail = thmb;
-            embed.image = img;
-            embed.author = auth;
-            embed.fields = flds;
+            title = ttl;
+            description = dsc;
+            url = ulr;
+            footer = ftr;
+            thumbnail = thmb;
+            image = img;
+            author = auth;
+            fields = flds;
             return embed;
         }
     }
 
     public static class Footer {
-        private String text;
-        private String iconUrl;
+        private final String text;
+        private final String iconUrl;
 
         private Footer(String text, String iconUrl) {
             this.text = text;
@@ -144,7 +129,7 @@ public class DiscEmbed {
     }
 
     public static class Thumbnail {
-        private String url;
+        private final String url;
 
         private Thumbnail(String url) {
             this.url = url;
@@ -156,7 +141,7 @@ public class DiscEmbed {
     }
 
     public static class Image {
-        private String url;
+        private final String url;
 
         private Image(String url) {
             this.url = url;
@@ -168,9 +153,9 @@ public class DiscEmbed {
     }
 
     public static class Author {
-        private String name;
-        private String url;
-        private String iconUrl;
+        private final String name;
+        private final String url;
+        private final String iconUrl;
 
         private Author(String name, String url, String iconUrl) {
             this.name = name;
@@ -192,9 +177,9 @@ public class DiscEmbed {
     }
 
     public static class Field {
-        private String name;
-        private String value;
-        private boolean inline;
+        private final String name;
+        private final String value;
+        private final boolean inline;
 
         private Field(String name, String value, boolean inline) {
             this.name = name;
