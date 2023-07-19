@@ -15,6 +15,7 @@
   - [The use of DiscReporter](#discreporter)
     - [DiscReporter Embeds](#discreporter-embeds)
   - [The implementation of CallBack Interface](#callback)
+- [Demo Codes](#demo-codes)
 - [Support library improvements (Donations)](#donations)
 
 <br/>
@@ -101,6 +102,7 @@ The TeleReport composed of Header, SubHeader ( __optional__ ), Message or Body a
   ```java
       tr.sendReport();
   ```
+  
   
 ## DiscReporter
 The DiscReport composed of main report content ( consider it like a header or the main message if you don't need to use the embeds ),
@@ -203,6 +205,18 @@ As in the image bellow:
 ```
 
 <br/>
+
+# Demo Codes
+
+You can find full demo codes for Java and Kotlin here:
+<details>
+  <summary>Java Codes</summary>
+  <a href="https://github.com/smith8h/SReporter/blob/main/app/src/main/java/smith/test/MainActivity.java">See demo codes for Java</a>
+</details>
+<details>
+  <summary>Kotlin Codes</summary>
+  <a href="https://github.com/smith8h/SReporter/blob/main/app/src/main/java/smith/test/MainActivityKotlin.kt">See demo codes for Kotlin</a>
+</details>
 
 # Donations
 > If you would like to support this project's further development, the creator of this projects or the continuous maintenance of the project **feel free to donate**.

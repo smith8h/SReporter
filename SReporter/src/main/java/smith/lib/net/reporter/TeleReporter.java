@@ -14,7 +14,6 @@ import java.util.Map;
 
 import smith.lib.net.*;
 
-@SuppressLint("Unused")
 public class TeleReporter {
 	
     public static final int USER_INFO = 0;
