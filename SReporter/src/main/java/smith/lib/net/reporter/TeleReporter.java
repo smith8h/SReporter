@@ -1,6 +1,5 @@
 package smith.lib.net.reporter;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.pm.*;
@@ -9,7 +8,6 @@ import androidx.annotation.NonNull;
 import java.net.*;
 import java.nio.charset.StandardCharsets;
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.Map;
 
 import smith.lib.net.*;
@@ -135,7 +133,7 @@ public class TeleReporter {
         buffer.append("**").append(reportHeader).append("**\n");
         if (!reportSubHeader.isEmpty()) buffer.append(reportSubHeader).append("\n");
         buffer.append("\n**").append(context.getString(R.string.tele_reporter_message_title)).append("**\n");
-		buffer.append(reportMessage).append("\n\n");
+        buffer.append(reportMessage).append("\n\n");
         buffer.append("**").append(context.getString(R.string.tele_reporter_footer_title)).append("**\n");
         buffer.append(reportFooter);
         

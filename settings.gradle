@@ -21,6 +21,6 @@ buildCache {
     }
 }
 
-rootProject.name = "Smith Library"
+rootProject.name = "SReporter Library"
 include ':app'
 include ':SReporter'
