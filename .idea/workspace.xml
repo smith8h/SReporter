@@ -9,13 +9,10 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e8848c8-6509-4f21-b60a-cbd7cf8d3d3e" name="Changes" comment="- Added Java and Kotlin demo codes">
-      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+    <list default="true" id="0e8848c8-6509-4f21-b60a-cbd7cf8d3d3e" name="Changes" comment="- Fix strings.xml formatted text issues.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SReporter/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SReporter/src/main/AndroidManifest.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SReporter/src/main/java/smith/lib/net/reporter/TeleReporter.java" beforeDir="false" afterPath="$PROJECT_DIR$/SReporter/src/main/java/smith/lib/net/reporter/TeleReporter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SReporter/src/main/res/values/strings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/SReporter/src/main/res/values/strings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/SReporter/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/SReporter/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -184,7 +181,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689802494345</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="- Fix strings.xml formatted text issues.">
+      <created>1689851896212</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1689851896212</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -207,6 +211,7 @@
     <MESSAGE value="- Fixed some of minSDK issues" />
     <MESSAGE value="- Updated README file" />
     <MESSAGE value="- Added Java and Kotlin demo codes" />
-    <option name="LAST_COMMIT_MESSAGE" value="- Added Java and Kotlin demo codes" />
+    <MESSAGE value="- Fix strings.xml formatted text issues." />
+    <option name="LAST_COMMIT_MESSAGE" value="- Fix strings.xml formatted text issues." />
   </component>
 </project>

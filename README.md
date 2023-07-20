@@ -2,8 +2,8 @@
 
 [![Build Status](https://travis-ci.org/niltonvasques/simplecov-shields-badge.svg?branch=master)](https://travis-ci.org/niltonvasques/simplecov-shields-badge)
 ![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)
-![minimumSDK](https://img.shields.io/badge/minSDK-21-f39f37)
-![stable version](https://img.shields.io/badge/stable_version-v1.0-blue)
+![minimumSDK](https://img.shields.io/badge/minSDK-24-f39f37)
+![stable version](https://img.shields.io/badge/stable_version-v2.1-blue)
 ![Repository size](https://img.shields.io/github/repo-size/smith8h/SReporter)
 
 <br/>
@@ -34,7 +34,7 @@ allprojects {
 > **Step 2.** Add the dependency:
 ```gradle
 dependencies {
-    implementation 'com.github.smith8h:SReporter:v2.0'
+    implementation 'com.github.smith8h:SReporter:v2.1'
 }
 ```
 
