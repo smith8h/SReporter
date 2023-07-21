@@ -10,12 +10,12 @@
     <string name="disc_reporter_no_content">NO CONTENT PROVIDED!</string>
     <string name="disc_reporter_no_webhook">NO DISCORD WEBHOOK PROVIDED!</string>
     
-    <string name="tele_reporter_header_title" formatted="false">A New Report Sent from %s App!</string>
+    <string name="tele_reporter_header_title">A New Report Sent from </string>
     <string name="tele_reporter_message_title">Message:</string>
     <string name="tele_reporter_footer_title">More Information:</string>
     
-    <string name="tele_reporter_device_model" formatted="false">Device model: %s %s</string>
-    <string name="tele_reporter_android_version" formatted="false">Android version: %s (%s)</string>
-    <string name="tele_reporter_app_used" formatted="false">App: %s (%s)</string>
+    <string name="tele_reporter_device_model">Device model: </string>
+    <string name="tele_reporter_android_version">Android version: </string>
+    <string name="tele_reporter_app_used">App: </string>
     
 </resources>

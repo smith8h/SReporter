@@ -1,7 +1,6 @@
 package smith.test
 
 import android.os.Bundle
-import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,9 +11,7 @@ class MainActivityKotlin: AppCompatActivity(), ReporterCallBack {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-    }
 
-    fun check(v: View) {
         val et = findViewById<EditText>(R.id.et)
 
         val webhookURL = "https://discord.com/api.........."

@@ -32,7 +32,7 @@ public class TeleReporter {
         noTokenMsg = context.getString(R.string.tele_reporter_no_token_msg);
         noUsernameMsg = context.getString(R.string.tele_reporter_no_id_msg);
         failMsg = context.getString(R.string.tele_reporter_failed);
-		reportHeader = context.getString(R.string.tele_reporter_header_title, getAppName());
+        reportHeader = context.getString(R.string.tele_reporter_header_title) + getAppName() + " App!";
         reportMessage = context.getString(R.string.tele_reporter_no_msg);
     	noInternet = context.getString(R.string.tele_reporter_no_internet);
         malformedUrl = context.getString(R.string.tele_reporter_malformed_url);
@@ -142,9 +142,9 @@ public class TeleReporter {
 	
 	@NonNull
     private String getUserInfo() {
-        return context.getString(R.string.tele_reporter_device_model, Build.MANUFACTURER, Build.MODEL) + "\n" +
-                context.getString(R.string.tele_reporter_android_version, Build.VERSION.RELEASE, Build.VERSION.CODENAME) + "\n" +
-                context.getString(R.string.tele_reporter_app_used, getAppName(), info.versionName);
+        return context.getString(R.string.tele_reporter_device_model) + Build.MANUFACTURER + " " + Build.MODEL + "\n" +
+                context.getString(R.string.tele_reporter_android_version) + Build.VERSION.RELEASE + " (" + Build.VERSION.CODENAME + ")\n" +
+                context.getString(R.string.tele_reporter_app_used) + getAppName() + " (" + info.versionName + ")";
     }
 	
 	private String getAppName() {
