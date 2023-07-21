@@ -9,11 +9,7 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0e8848c8-6509-4f21-b60a-cbd7cf8d3d3e" name="Changes" comment="- Fix strings.xml formatted text issues.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/SReporter/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/SReporter/build.gradle" afterDir="false" />
-    </list>
+    <list default="true" id="0e8848c8-6509-4f21-b60a-cbd7cf8d3d3e" name="Changes" comment="- Docs updates" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -188,7 +184,14 @@
       <option name="project" value="LOCAL" />
       <updated>1689851896212</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="- Docs updates">
+      <created>1689853551739</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1689853551739</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -212,6 +215,7 @@
     <MESSAGE value="- Updated README file" />
     <MESSAGE value="- Added Java and Kotlin demo codes" />
     <MESSAGE value="- Fix strings.xml formatted text issues." />
-    <option name="LAST_COMMIT_MESSAGE" value="- Fix strings.xml formatted text issues." />
+    <MESSAGE value="- Docs updates" />
+    <option name="LAST_COMMIT_MESSAGE" value="- Docs updates" />
   </component>
 </project>
